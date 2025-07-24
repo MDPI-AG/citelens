@@ -1,0 +1,61 @@
+---
+default_language_version:
+  python: python3.12
+default_stages: [pre-commit, pre-push]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files # Prevent giant files from being committed
+        args: [--maxkb=5000]
+      - id: check-json # Attempts to load all json files to verify syntax
+        exclude: ^.vscode
+      - id: check-merge-conflict # Check for files that contain merge conflict strings
+      - id: check-toml # Attempts to load all TOML files to verify syntax
+      - id: detect-private-key # Checks for the existence of private keys
+        exclude: .env
+      - id: pretty-format-json # Checks that all your JSON files are pretty. "Pretty" here means that keys are sorted and indented. You can configure this with the following commandline options
+        args: [--autofix]
+        exclude: ^.vscode|notebooks
+  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+    rev: 0.2.3
+    hooks:
+      - id: yamlfmt
+        args: [--mapping, '2', --sequence, '4', --offset, '2']
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.2 # Ruff version.
+    hooks:
+      # Run the linter.
+      - id: ruff
+        args: [--fix]
+      # Run the formatter.
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: pip-check
+        name: pip check
+        entry: uv pip check
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: uv-lock
+        name: check that UV lock is up to date
+        entry: uv lock --locked
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: deptry
+        name: deptry
+        description: deptry is a command line tool to check for issues with dependencies in a Python project, such as unused or missing dependencies.
+        entry: uv run deptry .
+        language: system
+        always_run: true
+        pass_filenames: false
+      - id: pytest
+        name: pytest
+        entry: uv run pytest
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
+

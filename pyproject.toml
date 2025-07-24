@@ -1,0 +1,33 @@
+[project]
+requires-python = ">=3.12, <3.13"
+name = "citelens"
+version = "0.1.0"
+description = "Cite Lens: An AI Tool for Detecting Out-of-Scope and Out-of-Context Citations"
+authors = [
+    {name = "MDPI AG"}
+]
+readme = "README.md"
+license = {text = "GPL-3.0"}
+
+dependencies = [
+    "typer>=0.16.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest >=8.4.1,<9",
+    "ruff >=0.12.2,<1",
+    "deptry >=0.23.0,<1",
+    "pre-commit >=4.2.0,<5",
+]
+
+[build-system]
+requires = ["uv_build>=0.7.19,<0.8.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "citelens"
+module-root = ""
+
+[project.scripts]
+citelens = "citelens:app"
