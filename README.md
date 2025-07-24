@@ -31,11 +31,97 @@ pip install https://github.com/MDPI-AG/citelens/archive/refs/heads/master.zip
 
 ## Usage
 
-TBC
+The CLI tool `citelens` can be used to process a JSON file containing citation items. If no output file is specified, the results are printed to standard output (stdout).
 
-## Input format
+```bash
+$ citelens example.json
+Item      1: Publisher A Journal A
+    article-reference similarity 0.870
+    context-reference similarity 0.773
 
-TBD
+Item      2: Publisher B Journal B
+    article-reference similarity 0.809
+    context-reference similarity 0.790
+```
+
+
+Alternatively, the output can be written to a file:
+
+```bash
+$ citelens example.json output.json
+$ cat output.json
+[
+  {
+    "id": 1,
+    "article_reference": 0.8704640865325928,
+    "context_reference": 0.7734495997428894,
+    "publisher": "Publisher A",
+    "journal": "Journal A"
+  },
+  {
+    "id": 2,
+    "article_reference": 0.8086146116256714,
+    "context_reference": 0.7901187539100647,
+    "publisher": "Publisher B",
+    "journal": "Journal B"
+  }
+]
+```
+
+### Input format
+
+The input format is a list of `CitationItem`s as defined in `citelens/dto.py`. Each item should contain the following fields:
+
+- `id`: An arbitrary ID to match citation items with computed similarity results.
+- `paper`: An `Article` object representing the citing article.
+- `reference`: An `Article` object representing the cited article.
+- `context`: The text of the paragraph where the citation appears.
+- `publisher`: The publisher of the cited article (optional).
+- `journal`: The journal of the cited article (optional).
+
+For each citation item, the tool computes two similarity scores:
+- `article_reference`: Similarity between the citing article and the cited article.
+- `context_reference`: Similarity between the citing context and the cited article.
+
+### Example input file
+
+An input file might look like `example.json`.
+
+```json
+[{
+    "id": 1,
+    "paper": {
+        "title": "Test Paper",
+        "abstract": "This is a test abstract.",
+        "doi": "10.1000/test"
+    },
+    "reference": {
+        "title": "Test Reference",
+        "abstract": null,
+        "doi": null
+    },
+    "context": "This is the context of the citation.",
+    "publisher": "Publisher A",
+    "journal": "Journal A"
+}, {
+    "id": 2,
+    "paper": {
+        "title": "Another Paper",
+        "abstract": "This is another test abstract.",
+        "doi": "10.1000/other"
+    },
+    "reference": {
+        "title": "Some other reference",
+        "abstract": "On the same other optic",
+        "doi": "10.1000/someother"
+    },
+    "context": "This is the context of the citation.",
+    "publisher": "Publisher B",
+    "journal": "Journal B"
+}]
+```
+
+
 
 ## Development and contributing
 

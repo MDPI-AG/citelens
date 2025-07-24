@@ -10,12 +10,17 @@ readme = "README.md"
 license = {text = "GPL-3.0"}
 
 dependencies = [
+    "numpy>=2.3.1",
+    "pydantic>=2.11.7",
+    "torch>=2.7.1",
+    "tqdm>=4.67.1",
+    "transformers>=4.53.3",
     "typer>=0.16.0",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest >=8.4.1,<9",
+    "pytest>=8.4.1,<9",
     "ruff >=0.12.2,<1",
     "deptry >=0.23.0,<1",
     "pre-commit >=4.2.0,<5",
@@ -30,4 +35,4 @@ module-name = "citelens"
 module-root = ""
 
 [project.scripts]
-citelens = "citelens:app"
+citelens = "citelens.cli:app"
