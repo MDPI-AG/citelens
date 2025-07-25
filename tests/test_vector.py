@@ -32,7 +32,7 @@ def test_embed_test_real():
     assert embedding[1] == approx(0.636, abs=1e-3)
 
 
-@patch("citelens.embed_text", mock.embed_text)
+@patch("citelens.lib.embed_text", mock.embed_text)
 def test_embed_article_no_abstract():
     """Test embedding an article without an abstract."""
     article = citelens.Article(title="Test title", abstract=None)
@@ -43,7 +43,7 @@ def test_embed_article_no_abstract():
     assert embedding.dtype == np.float32
 
 
-@patch("citelens.embed_text", mock.embed_text)
+@patch("citelens.lib.embed_text", mock.embed_text)
 def test_embed_article_with_abstract():
     """Test embedding an article with an abstract."""
     article = citelens.Article(title="Test title", abstract="Test abstract")
@@ -54,7 +54,7 @@ def test_embed_article_with_abstract():
     assert embedding.dtype == np.float32
 
 
-@patch("citelens.embed_text", mock.embed_text)
+@patch("citelens.lib.embed_text", mock.embed_text)
 def test_embedding_similarity_identical():
     """Check that the same article has a similarity of 1."""
     embedding = np.array([1.0, 2.0, 3.0, -4.0, -5.0])
@@ -62,7 +62,7 @@ def test_embedding_similarity_identical():
     assert citelens.embedding_similarity(embedding, embedding) == approx(1.0)
 
 
-@patch("citelens.embed_text", mock.embed_text)
+@patch("citelens.lib.embed_text", mock.embed_text)
 def test_embedding_similarity_similar():
     """Check that the two similar articles have a similarity close to 1."""
     embedding1 = np.array([1.0, 2.0, 3.0, -4.0, -5.0])
@@ -71,7 +71,7 @@ def test_embedding_similarity_similar():
     assert citelens.embedding_similarity(embedding1, embedding2) == approx(1.0, abs=1e-3)
 
 
-@patch("citelens.embed_text", mock.embed_text)
+@patch("citelens.lib.embed_text", mock.embed_text)
 def test_embedding_similarity_orthogonal():
     """Check that two orthogonal articles have a similarity of 0."""
     embedding1 = np.array([1.0, 2.0, 0.0])
@@ -80,7 +80,7 @@ def test_embedding_similarity_orthogonal():
     assert citelens.embedding_similarity(embedding1, embedding2) == approx(0.0, abs=1e-3)
 
 
-@patch("citelens.embed_text", mock.embed_text)
+@patch("citelens.lib.embed_text", mock.embed_text)
 def test_embedding_similarity_antipolar():
     """Check that antipolar articles have a similarity of -1."""
     embedding1 = np.array([1.0, 2.0, 3.0, -4.0, -5.0])
