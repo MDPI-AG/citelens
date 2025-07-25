@@ -1,0 +1,18 @@
+[
+  {
+    "context": null,
+    "id": 1,
+    "journal": "Arabian Journal of Geosciences",
+    "paper": {
+      "abstract": "The evaluation results of the plant landscape scenic beauty estimation of roof greening can provide theoretical basis for the future development planning and design of roof greening in Zhengzhou. Taking 26 roof greening places in Zhengzhou city of Henan Province as the research object, 26 plant landscape samples were selected, and the beauty value of each sample was calculated by the beauty evaluation method (SBE). Finally, the beauty evaluation model was constructed as follows: SBE = \u22121.932 + 0.176X2 \u2212 0.456X4 + 0.590X6 + 0.595X9 \u2212 0.329X10 + 0.271X11. The results showed that the characteristics of life style, plant growth, richness of plant layers, road pavement, density of branches and leaves, and richness of plant color all had certain effects on the beauty of roof greening plant landscape. According to the evaluation results, some suggestions are put forward for the development of roof greening in Zhengzhou.",
+      "doi": "https://doi.org/10.1007/s12517-021-07225-w",
+      "title": "RETRACTED ARTICLE: Research on scenic beauty estimation of plant landscape on the roof on SBE method"
+    },
+    "publisher": "Springer",
+    "reference": {
+      "abstract": "Autistic individuals often have difficulties expressing or controlling emotions and have poor eye contact, among other symptoms. The prevalence of autism is increasing globally, posing a need to address this concern. Current diagnostic systems have particular limitations; hence, some individuals go undiagnosed or the diagnosis is delayed. In this study, an effective autism diagnostic system using electroencephalogram (EEG) signals, which are generated from electrical activity in the brain, was developed and characterized. The pre-processed signals were converted to two-dimensional images using the higher-order spectra (HOS) bispectrum. Nonlinear features were extracted thereafter, and then reduced using locality sensitivity discriminant analysis (LSDA). Significant features were selected from the condensed feature set using Student\u2019s t-test, and were then input to different classifiers. The probabilistic neural network (PNN) classifier achieved the highest accuracy of 98.70% with just five features. Ten-fold cross-validation was employed to evaluate the performance of the classifier. It was shown that the developed system can be useful as a decision support tool to assist healthcare professionals in diagnosing autism.",
+      "doi": "https://doi.org/10.3390/ijerph17030971",
+      "title": "Autism Spectrum Disorder Diagnostic System Using HOS Bispectrum with EEG Signals"
+    }
+  }
+]

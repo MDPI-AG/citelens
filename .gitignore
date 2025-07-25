@@ -6,7 +6,6 @@
 *.xlsx
 *.xls
 *.parquet
-*.json
 logs
 *.log*
 .vscode/*

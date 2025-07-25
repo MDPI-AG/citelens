@@ -32,13 +32,23 @@ def citelens(
     progress: Annotated[
         bool, Option(help="Show progress bar for processing items. Ignore if output is stdout.")
     ] = True,
+    article_reference_threshold: Annotated[
+        float,
+        Option(
+            help="Threshold for article-reference similarity. Defaults to 0.68.", envvar="ARTICLE_REFERENCE_THRESHOLD"
+        ),
+    ] = 0.68,
+    context_reference_threshold: Annotated[
+        float,
+        Option(
+            help="Threshold for context-reference similarity. Defaults to 0.68.", envvar="CONTEXT_REFERENCE_THRESHOLD"
+        ),
+    ] = 0.68,
 ):
     """Cite Lens: An AI Tool for Detecting Out-of-Scope and Out-of-Context Citations.
 
     The input file should contain citation items with information about a paper, a reference, and its citation context.
     The output will be saved to the specified output file or printed to stdout if no output file is provided.
-
-
 
     Copyright (C) 2025 MDPI AG
 
@@ -61,7 +71,13 @@ def citelens(
     # If printing to stdout, process items directly
     if output_file == "-":
         for item in items:
-            print(process_item(item))
+            print(
+                process_item(
+                    item,
+                    article_reference_threshold=article_reference_threshold,
+                    context_reference_threshold=context_reference_threshold,
+                )
+            )
         return
 
     # Wrap items in tqdm for progress bar if requested
@@ -69,7 +85,14 @@ def citelens(
         items = tqdm(items)
 
     # Main processing loop
-    results = [process_item(item).model_dump() for item in items]
+    results = [
+        process_item(
+            item,
+            article_reference_threshold=article_reference_threshold,
+            context_reference_threshold=context_reference_threshold,
+        ).model_dump()
+        for item in items
+    ]
 
     # Write results to the output file
     with open(output_file, "w") as outfile:

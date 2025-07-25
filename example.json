@@ -1,0 +1,34 @@
+[
+  {
+    "context": "This is the context of the citation.",
+    "id": 1,
+    "journal": "Journal A",
+    "paper": {
+      "abstract": "This is a test abstract.",
+      "doi": "10.1000/test",
+      "title": "Test Paper"
+    },
+    "publisher": "Publisher A",
+    "reference": {
+      "abstract": null,
+      "doi": null,
+      "title": "Test Reference"
+    }
+  },
+  {
+    "context": "This is the context of the citation.",
+    "id": 2,
+    "journal": "Journal B",
+    "paper": {
+      "abstract": "This is another test abstract.",
+      "doi": "10.1000/other",
+      "title": "Another Paper"
+    },
+    "publisher": "Publisher B",
+    "reference": {
+      "abstract": "On the same other optic",
+      "doi": "10.1000/someother",
+      "title": "Some other reference"
+    }
+  }
+]

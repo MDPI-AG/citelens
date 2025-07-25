@@ -33,7 +33,7 @@ class CitationItem(BaseModel):
     id: int = Field(description="Arbitrary ID to match citation items with computed similarity results")
     paper: Article
     reference: Article
-    context: str
+    context: str | None = None
     publisher: str | None = None
     journal: str | None = None
 
@@ -45,16 +45,22 @@ class SimilarityResult(BaseModel):
     article_reference: float = Field(
         description="Embedding similarity between the citing article (article) and the cited article (reference)."
     )
-    context_reference: float = Field(
+    article_reference_alert: bool = Field(
+        description="Whether the article-reference similarity is below the detection threshold."
+    )
+    context_reference: float | None = Field(
         description="Embedding similarity between the paragraph where the citation appears (context) and the cited article (reference)."
+    )
+    context_reference_alert: bool | None = Field(
+        description="Whether the context-reference similarity is below the detection threshold."
     )
     publisher: str | None = None
     journal: str | None = None
 
     def __str__(self):
         """String representation used when printing to stdout."""
-        return (
-            f"Item {self.id: 6d}: {self.publisher or ''} {self.journal or ''}\n"
-            f"    article-reference similarity {self.article_reference:.3f}\n"
-            f"    context-reference similarity {self.context_reference:.3f}\n"
-        )
+        res_str = f"Item {self.id: 6d}: {self.publisher or ''} {self.journal or ''}\n"
+        res_str += f"    article-reference similarity {self.article_reference:.3f} {'(ALERT!)' if self.article_reference_alert else ''}\n"
+        if self.context_reference is not None:
+            res_str += f"    context-reference similarity {self.context_reference:.3f} {'(ALERT!)' if self.context_reference_alert else ''}\n"
+        return res_str

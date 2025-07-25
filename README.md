@@ -1,4 +1,4 @@
-# Cite Lens: An AI Tool for Detecting Out-of-Scope and Out-of-Context Citations 
+# Cite Lens: An AI Tool for Detecting Out-of-Scope and Out-of-Context Citations
 
 Cite Lens is an AI-powered tool to measure the relevance of citations in scientific papers using semantic similarity.
 The concept was developed by MDPI AG, a leading open access publisher, and presented at the
@@ -8,6 +8,7 @@ This repository contains a commandline tool (CLI) that performs the similarity c
 It uses the open source embedding model Specter downloaded from Hugging Face.
 The commandline tool is designed to read
 a JSON file with citation items, each composed of
+
 * the citing article title and abstract,
 * the citing context (usually a sentence or paragraph), and
 * the title and abstract of the reference article.
@@ -19,6 +20,7 @@ to restrictive copyright licenses and cannot be made available.
 ## Installation
 
 You can install the Cite Lens CLI as a `uv` tool (recommended)
+
 ```bash
 uv tool install https://github.com/MDPI-AG/citelens/archive/refs/heads/master.zip
 ```
@@ -44,7 +46,6 @@ Item      2: Publisher B Journal B
     context-reference similarity 0.790
 ```
 
-
 Alternatively, the output can be written to a file:
 
 ```bash
@@ -54,19 +55,25 @@ $ cat output.json
   {
     "id": 1,
     "article_reference": 0.8704640865325928,
+    "article_reference_alert": false,
     "context_reference": 0.7734495997428894,
+    "context_reference_alert": false,
     "publisher": "Publisher A",
     "journal": "Journal A"
   },
   {
     "id": 2,
     "article_reference": 0.8086146116256714,
+    "article_reference_alert": false,
     "context_reference": 0.7901187539100647,
+    "context_reference_alert": false,
     "publisher": "Publisher B",
     "journal": "Journal B"
   }
 ]
 ```
+
+We provide an actual example of an article retracted for out of scope references [json file](./real_case_example.json), see https://doi.org/10.1007/s12517-022-10107-4
 
 ### Input format
 
@@ -80,6 +87,7 @@ The input format is a list of `CitationItem`s as defined in `citelens/dto.py`. E
 - `journal`: The journal of the cited article (optional).
 
 For each citation item, the tool computes two similarity scores:
+
 - `article_reference`: Similarity between the citing article and the cited article.
 - `context_reference`: Similarity between the citing context and the cited article.
 
@@ -121,7 +129,11 @@ An input file might look like `example.json`.
 }]
 ```
 
+## Run example
 
+```bash
+uv run citelens ./example.json
+```
 
 ## Development and contributing
 
@@ -131,5 +143,6 @@ To contribute to the development of Cite Lens, you can clone the repository and 
 git clone https://github.com/MDPI-AG/citelens.git
 cd citelens
 make install
+make install_pre_commit
 uv run citelens --help
 ```
