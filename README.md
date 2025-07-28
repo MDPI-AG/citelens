@@ -73,8 +73,6 @@ $ cat output.json
 ]
 ```
 
-We provide an actual example of an article retracted for out of scope references [json file](./real_case_example.json), see https://doi.org/10.1007/s12517-022-10107-4
-
 ### Input format
 
 The input format is a list of `CitationItem`s as defined in `citelens/dto.py`. Each item should contain the following fields:
@@ -129,6 +127,9 @@ An input file might look like `example.json`.
 }]
 ```
 
+
+We provide an example of an [article](https://doi.org/10.1007/s12517-022-10107-4) retracted for out-of-scope citation [json file](./real_case_example.json). We also include in this example Json a proper reference as a comparison.
+
 ## Run example
 
 ```bash
@@ -146,3 +147,4 @@ make install
 make install_pre_commit
 uv run citelens --help
 ```
+ 
