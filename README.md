@@ -13,9 +13,7 @@ a JSON file with citation items, each composed of
 * the citing context (usually a sentence or paragraph), and
 * the title and abstract of the reference article.
 
-The dataset used for the publication at TPDL 2025 is not shared with the tool in this repository.
-Although the papers used in the analysis are open access, the cited articles might be subject
-to restrictive copyright licenses and cannot be made available.
+The dataset of open access articles used in this work is available [here](https://huggingface.co/datasets/mdpi-ai/citelens). Cited articles are not included due to potential copyright restrictions.
 
 ## Installation
 
