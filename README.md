@@ -1,8 +1,8 @@
 # Cite Lens: An AI Tool for Detecting Out-of-Scope and Out-of-Context Citations
 
 Cite Lens is an AI-powered tool to measure the relevance of citations in scientific papers using semantic similarity.
-The concept was developed by MDPI AG, a leading open access publisher, and presented at the
-[TPDL 2025 conference](https://tpdl2025.github.io/).
+The concept was developed by MDPI AG, and presented at the
+[TPDL 2025 conference](https://tpdl2025.github.io/) [doi.org/10.1007/978-3-032-06136-2_3](doi.org/10.1007/978-3-032-06136-2_3).
 
 This repository contains a commandline tool (CLI) that performs the similarity computation used in the publication.
 It uses the open source embedding model Specter downloaded from Hugging Face.
@@ -145,4 +145,32 @@ make install
 make install_pre_commit
 uv run citelens --help
 ```
+
+If you use this work in your research, please consider citing us:
+
+```bibtex
+@InProceedings{10.1007/978-3-032-06136-2_3,
+author="Broise, Jean-Baptiste de la
+and Sauerburger, Frank
+and Sayas, Enric
+and Tecu, Dan-Marin
+and Meijere, Sanita
+and Cuculovic, Milos",
+editor="Balke, Wolf-Tilo
+and Golub, Koraljka
+and Manolopoulos, Yannis
+and Stefanidis, Kostas
+and Zhang, Zheying
+and Aalberg, Trond
+and Manghi, Paolo",
+title="Cite Lens: An AI Tool for Detecting Out-of-Scope and Out-of-Context Citations",
+booktitle="New Trends in Theory and Practice of Digital Libraries",
+year="2026",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="25--34",
+isbn="978-3-032-06136-2"
+}
+```
+
  
