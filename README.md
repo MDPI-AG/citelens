@@ -2,7 +2,7 @@
 
 Cite Lens is an AI-powered tool to measure the relevance of citations in scientific papers using semantic similarity.
 The concept was developed by MDPI AG, and presented at the
-[TPDL 2025 conference](https://tpdl2025.github.io/) [doi.org/10.1007/978-3-032-06136-2_3](doi.org/10.1007/978-3-032-06136-2_3).
+[TPDL 2025 conference](https://tpdl2025.github.io/), [doi.org/10.1007/978-3-032-06136-2_3](doi.org/10.1007/978-3-032-06136-2_3).
 
 This repository contains a commandline tool (CLI) that performs the similarity computation used in the publication.
 It uses the open source embedding model Specter downloaded from Hugging Face.
